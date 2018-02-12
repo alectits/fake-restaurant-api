@@ -19,12 +19,16 @@ router.get('/orders', (req,res) => {
   var filteredOrders = [];
   if (req.query.status !== undefined) {
     filteredOrders = fakeRestaurant.getOrderByStatus(req.query.status);
+  } else {
+    filteredOrders = fakeRestaurant.getAll();
   }
+
   if (req.query.client !== undefined) {
     filteredOrders = filteredOrders.filter((order) => {
       return order.client === req.query.client;
     });
   }
+
   if (req.query.client === undefined && req.query.status === undefined){
     return res.status(200).json(fakeRestaurant.getAll());
   } else {
