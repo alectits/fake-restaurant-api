@@ -13,7 +13,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "fake-restaurant": "0.0.3"
+    "fake-restaurant": "0.0.5"
   },
   "devDependencies": {
     "chai": "^4.1.2",
