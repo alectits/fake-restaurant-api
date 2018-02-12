@@ -1,0 +1,22 @@
+{
+  "name": "esercizio-fake-restaurant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha test/**/*.js",
+    "start": "node app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "fake-restaurant": "0.0.3"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "supertest": "^3.0.0"
+  }
+}
