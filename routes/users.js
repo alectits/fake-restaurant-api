@@ -32,7 +32,7 @@ router.post('/', firstMiddleware, (req, res, next) => {
   }
   var orderToAdd = fakeRestaurant.addOrder(newOrder, req.query.token);
   if (orderToAdd) {
-    return res.status(404).json({message: "Thanks "+ req.query.token +" Order Added!"});
+    return res.status(201).json({message: "Thanks "+ req.query.token +" Order Added!"});
   }
 });
 

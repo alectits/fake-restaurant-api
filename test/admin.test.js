@@ -6,9 +6,9 @@ var should = chai.should;
 const app = require('../app');
 
 describe('ADMIN', () => {
-  it('GET all products', (done) => {
+  it('should GET all the orders', (done) => {
     request(app)
-      .get('/admin/products/?token=admin')
+      .get('/admin/orders/?token=admin')
       .set('Accept', 'application/json')
       .expect(200)
       .end((err, res) => {
@@ -17,23 +17,23 @@ describe('ADMIN', () => {
         done();
       });
   });
-  it('GET single product', (done) => {
+  it('should GET single order', (done) => {
     request(app)
-      .get('/admin/products/2/?token=admin')
+      .get('/admin/orders/2/?token=admin')
       .set('Accept', 'application/json')
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
         expect(res.body.id).to.be.a('number');
-        expect(res.body.name).to.be.a('string');
-        expect(res.body.amount).to.be.a('number');
+        expect(res.body.client).to.be.a('string');
+        expect(res.body.items).to.be.a('array');
         expect(res.body.price).to.be.a('number');
         done();
       });
   });
-  it('GET single product with a not found product', (done) => {
+  it('shoiuld GET single order with a not found product', (done) => {
     request(app)
-      .get('/admin/products/10/?token=admin')
+      .get('/admin/orders/18/?token=admin')
       .set('Accept', 'application/json')
       .expect(404)
       .end((err, res) => {
@@ -42,9 +42,9 @@ describe('ADMIN', () => {
       });
   });
 
-  it('GET single product with a string id', (done) => {
+  it('should GET single orders with a string id', (done) => {
     request(app)
-      .get('/admin/products/ciao/?token=admin')
+      .get('/admin/orders/ciao/?token=admin')
       .set('Accept', 'application/json')
       .expect(400)
       .end((err, res) => {
@@ -53,9 +53,9 @@ describe('ADMIN', () => {
       });
   });
 
-  it('DELETE single product', (done) => {
+  it('should DELETE single order', (done) => {
     request(app)
-      .delete('/admin/products/1/?token=admin')
+      .delete('/admin/orders/1/?token=admin')
       .set('Accept', 'application/json')
       .expect(200)
       .end((err, res) => {
@@ -64,19 +64,4 @@ describe('ADMIN', () => {
       });
   });
 
-  it('POST add new product', (done) => {
-    request(app)
-      .post('/admin/products/?token=admin')
-      .set('Accept', 'application/json')
-      .send({
-        name: 'Nintendo',
-        price: 250.90,
-        amount: 10
-      })
-      .expect(201)
-      .end((err, res) => {
-        if (err) return done(err);
-        done();
-      });
-  });
 });
